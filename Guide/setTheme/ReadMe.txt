@@ -1,7 +1,7 @@
 Step by step here:
 0 - You need to create a new file in your root directory to store 
 configurations and keep them saved even when you shut down the machine
-// Example: "C:/config.txt"
+// Example: "C:/config.TXT"
 Obs: To create a new file, type the following command in the terminal / Ed("C:/config.txt") 
 and you need to write an initial theme in the first line example: gray
 
