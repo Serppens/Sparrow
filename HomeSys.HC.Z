@@ -19,7 +19,7 @@ U0 SrvStartUp()
   WinZBufUpdate;
 }
 
-U0 theme(*I64 theme){
+U0 theme(I64 *theme){
     // !StrCmp is the same as if("dog"=="dog")
     /* GrPaletteSet is the original command to change the Sparrow theme, the original
     options are light and gray */
