@@ -1,0 +1,70 @@
+//Place this file in /Home and change
+//anything you want.
+
+U0 UserStartUp()
+{//Run each time a user a spawned
+  DocTermNew;
+  Type("::/Doc/Start.DD");
+  LBts(&Fs->display_flags,DISPLAYf_SHOW);
+  WinToTop;
+  WinZBufUpdate;
+  Dir;
+}
+
+U0 SrvStartUp()
+{//Run each time a srv task is spawned.
+  DocTermNew;
+  LBts(&Fs->display_flags,DISPLAYf_SHOW);
+  WinToTop;
+  WinZBufUpdate;
+}
+
+U0 theme(*I64 theme){
+    // !StrCmp is the same as if("dog"=="dog")
+    /* GrPaletteSet is the original command to change the Sparrow theme, the original
+    options are light and gray */
+    // DocLineWrite() 
+    // -- First Parameter Path/Filename
+    // -- Second parameter line of the text file that should be written (this option is really good)
+    // -- Third parameter content that is to be written in doclinewrite
+    if(!StrCmp(theme,"gray")){
+      GrPaletteSet(gr_palette_gray);
+      DocLineWrite("C:/config.txt",1,"gray");
+    }else if(!StrCmp(theme,"gruvdark")){
+      GrPaletteSet(gr_palette_gruvdark);
+      DocLineWrite("C:/config.txt",1,"gruvdark");
+    }else if(!StrCmp(theme,"light")){
+      GrPaletteSet(gr_palette_std);
+      DocLineWrite("C:/config.txt",1,"light");
+    }
+}
+
+U0 StartUpTasks()
+{
+  /* This is where the theme will change, remembering that we will only transform 
+  this into a useful tool with everyone's collaboration */
+  //DocLineRead is the same as DocLineWrite but reads instead writes
+  
+  if(!StrCmp(DocLineRead("C:/config.txt",1),"gray")){
+    GrPaletteSet(gr_palette_gray);
+  }else if(!StrCmp(DocLineRead("C:/config.txt",1),"gruvdark")){
+    GrPaletteSet(gr_palette_gruvdark);
+  }else if(!StrCmp(DocLineRead("C:/config.txt",1),"light")){
+    GrPaletteSet(gr_palette_std);
+  }
+
+  CTask *user1,*user2;
+  user1=User;
+  user2=User;
+  WinToTop(user1);
+  WinTileVert;
+  "Boot Time:%7.3fs\n",tS;
+  XTalk(user1,"Cd;#include \"Once\";\n");
+  Silent;	//no output to scrn
+  ACInit("/*;!*/Bible.TXT*");
+  Silent(OFF); //no output to scrn
+}
+
+StartUpTasks;
+
+"\nTempleOS V%5.3f\t%D %T\n\n",sys_os_version,sys_compile_time,sys_compile_time;
