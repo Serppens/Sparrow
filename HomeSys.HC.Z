@@ -19,7 +19,7 @@ U0 SrvStartUp()
   WinZBufUpdate;
 }
 
-U0 theme(I64 *theme){
+U0 theme(*I64 theme){
     // !StrCmp is the same as if("dog"=="dog")
     /* GrPaletteSet is the original command to change the Sparrow theme, the original
     options are light and gray */
@@ -29,13 +29,13 @@ U0 theme(I64 *theme){
     // -- Third parameter content that is to be written in doclinewrite
     if(!StrCmp(theme,"gray")){
       GrPaletteSet(gr_palette_gray);
-      DocLineWrite("C:/config.TXT",1,"gray");
+      DocLineWrite("C:/config.txt",1,"gray");
     }else if(!StrCmp(theme,"gruvdark")){
       GrPaletteSet(gr_palette_gruvdark);
-      DocLineWrite("C:/config.TXT",1,"gruvdark");
+      DocLineWrite("C:/config.txt",1,"gruvdark");
     }else if(!StrCmp(theme,"light")){
       GrPaletteSet(gr_palette_std);
-      DocLineWrite("C:/config.TXT",1,"light");
+      DocLineWrite("C:/config.txt",1,"light");
     }
 }
 
@@ -45,21 +45,36 @@ U0 StartUpTasks()
   this into a useful tool with everyone's collaboration */
   //DocLineRead is the same as DocLineWrite but reads instead writes
   
-  if(!StrCmp(DocLineRead("C:/config.TXT",1),"gray")){
+  if(!StrCmp(DocLineRead("C:/config.txt",1),"gray")){
     GrPaletteSet(gr_palette_gray);
-  }else if(!StrCmp(DocLineRead("C:/config.TXT",1),"gruvdark")){
+  }else if(!StrCmp(DocLineRead("C:/config.txt",1),"gruvdark")){
     GrPaletteSet(gr_palette_gruvdark);
-  }else if(!StrCmp(DocLineRead("C:/config.TXT",1),"light")){
+  }else if(!StrCmp(DocLineRead("C:/config.txt",1),"light")){
     GrPaletteSet(gr_palette_std);
   }
-
-  CTask *user1,*user2;
-  user1=User;
-  user2=User;
-  WinToTop(user1);
+  I64 tk="no";
+  I32 i;
+  try{
+    /* Here it is reading line 2 because the
+    configuration is on line two /*
+    I32 qtyUsers=toInt(DocLineRead("C:/config.TXT",2));
+    for(i=0;i<qtyUsers;i++){
+      CTask *user0;
+      user0=User;
+      tk="ye";
+    }
+    if(!StrCmp(tk,"no")){
+      CTask *user1,*user2;
+      user1=User;
+      user2=User;
+    }
+  }catch{
+    CTask *user3,*user4;
+    user3=User;
+    user4=User;
+  }
   WinTileVert;
   "Boot Time:%7.3fs\n",tS;
-  XTalk(user1,"Cd;#include \"Once\";\n");
   Silent;	//no output to scrn
   ACInit("/*;!*/Bible.TXT*");
   Silent(OFF); //no output to scrn
