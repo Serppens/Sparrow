@@ -4,6 +4,6 @@ Creator of everything
 Contributors
   - Rafael F
 
-For you to appear here, be sure to leave a file called "myself.txt" in the pull request with your nickname and a public dogecoin address associated with you
+For you to appear here, be sure to leave a file called "myself.txt" in the pull request with your nickname and a public dogecoin address *optional* associated with you
 
 The reason for the address will be explained later, but you can be sure it will not be disclosed.
