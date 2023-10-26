@@ -1,5 +1,8 @@
 Recommend watching in order, starting with the set theme. I'll leave it in sequence as I don't intend to always repeat all the previous commands
 
+Video example:
+https://youtu.be/Wk453MfJNUU?si=RsN_PBkGECRqifo4
+
 
 "0 - Add the file toInt.HC.Z from this repository to the /Adam directory. Then, go to /Home/MakeHome.HC.Z and the MakeHome in the root folder, for example 'C:/' and include the toInt.HC.Z file exactly as it is in this repository. Then, restart the system."
 
